@@ -191,7 +191,7 @@
   padding-top: 0.85rem;
   border-top: 1px solid var(--rattan);
   color: var(--green);
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.14em;
   line-height: 1.5;
   text-align: right;
@@ -268,7 +268,7 @@
 
 .menu__index-status {
   color: var(--green);
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.14em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -602,6 +602,30 @@
 
   .contact__links {
     margin-top: 1.5rem;
+  }
+
+  .mobile-menu[open] > .mobile-menu__toggle {
+    top: calc(1rem + env(safe-area-inset-top));
+    right: calc(var(--gutter) + env(safe-area-inset-right));
+  }
+
+  .mobile-menu__panel {
+    padding-top: calc(6rem + env(safe-area-inset-top));
+    padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom));
+    overscroll-behavior: contain;
+  }
+
+  .mobile-menu__foot {
+    gap: 0.15rem;
+  }
+
+  .mobile-menu__foot a,
+  .hero__cta,
+  .contact__social a,
+  .menu__note {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 
