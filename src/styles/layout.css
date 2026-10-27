@@ -379,11 +379,11 @@
 
   .hero__panel {
     gap: 2rem;
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
   }
 
   .hero__logo {
-    width: 8.5rem;
+    width: 8rem;
   }
 
   .footer__nav,

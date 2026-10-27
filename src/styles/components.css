@@ -622,10 +622,17 @@
   .mobile-menu__foot a,
   .hero__cta,
   .contact__social a,
+  .menu__contact .text-link,
+  .jobs__contact .text-link,
+  .visit__map .text-link,
   .menu__note {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
+  }
+
+  .contact__email {
+    padding-block: 0.3rem;
   }
 }
 
