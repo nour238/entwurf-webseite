@@ -1,0 +1,617 @@
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu__toggle {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  list-style: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mobile-menu__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.menu-label-close {
+  display: none;
+}
+
+.mobile-menu[open] > .mobile-menu__toggle {
+  position: fixed;
+  top: 1rem;
+  right: var(--gutter);
+  z-index: 60;
+  color: var(--cream);
+}
+
+.mobile-menu[open] .menu-label-open {
+  display: none;
+}
+
+.mobile-menu[open] .menu-label-close {
+  display: inline;
+}
+
+.mobile-menu__panel {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 6rem var(--gutter) var(--gutter);
+  background: var(--green);
+  color: var(--cream);
+}
+
+.mobile-menu__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-5);
+}
+
+.mobile-menu__mark {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.mobile-menu__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu__nav a {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--rattan);
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 9vw, 3.75rem);
+  line-height: 1.05;
+  text-decoration: none;
+}
+
+.mobile-menu__nav a:first-child {
+  border-top: 1px solid var(--rattan);
+}
+
+.mobile-menu__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: var(--space-5);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.mobile-menu__foot a {
+  text-decoration: none;
+}
+
+.mobile-menu__address {
+  color: var(--sand);
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.cafe__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.cafe__text {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 5;
+  padding-top: 2rem;
+}
+
+.cafe__text h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+}
+
+.cafe__text p + p {
+  margin-top: 1rem;
+}
+
+.cafe__text .cafe__quote {
+  margin-top: 1.5rem;
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--rattan);
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.7rem);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.cafe__text .cafe__signature {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rattan);
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1.2;
+}
+
+.cafe__collage {
+  display: grid;
+  grid-column: 5 / 13;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.cafe__figure {
+  overflow: hidden;
+}
+
+.cafe__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cafe__figure--lamp {
+  grid-column: 1 / 8;
+  aspect-ratio: 3 / 4;
+}
+
+.cafe__figure--macrame {
+  grid-column: 8 / 13;
+  aspect-ratio: 4 / 5;
+  margin-top: 5rem;
+}
+
+.cafe__caption {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rattan);
+  color: var(--green);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.menu__intro {
+  grid-column: 1 / 5;
+  grid-row: 1;
+}
+
+.menu__contact {
+  grid-column: 1 / 5;
+  grid-row: 2;
+  align-self: end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--green);
+  font-size: 0.9rem;
+}
+
+.menu__intro h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.menu__body {
+  grid-column: 5 / 12;
+  grid-row: 1 / 3;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--green);
+}
+
+.menu__empty-title {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.menu__empty p + p {
+  margin-top: 1rem;
+}
+
+.menu__index {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.menu__index li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.8rem 0;
+}
+
+.menu__index-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.menu__index-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--rattan);
+  transform: translateY(-0.25em);
+}
+
+.menu__index-status {
+  color: var(--green);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.menu__empty .text-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.menu-category + .menu-category {
+  margin-top: 2.5rem;
+}
+
+.menu-category h3 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--green);
+  font-size: 1.9rem;
+}
+
+.menu-category ul {
+  list-style: none;
+}
+
+.menu-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px dotted var(--rattan);
+}
+
+.menu-item__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.menu-item__name {
+  font-weight: 500;
+}
+
+.menu-item__price {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.menu-item p {
+  max-width: 50ch;
+  margin-top: 0.25rem;
+  color: var(--green-deep);
+  font-size: 0.9rem;
+}
+
+.menu__note {
+  max-width: 55ch;
+  margin-top: 2rem;
+  color: var(--green-deep);
+  font-size: 0.82rem;
+}
+
+.visit__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+}
+
+.visit__info {
+  grid-column: 1 / 7;
+}
+
+.visit__address {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  line-height: 1.02;
+}
+
+.visit__city {
+  margin-top: 0.5rem;
+  color: var(--sand);
+  font-size: 1.1rem;
+}
+
+.visit__hours {
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rattan);
+}
+
+.visit__label {
+  margin-bottom: 0.75rem;
+  color: var(--sand);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.visit__hours > p {
+  max-width: 34ch;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table th,
+.hours-table td {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--rattan);
+  font-weight: 400;
+  text-align: left;
+}
+
+.hours-table th {
+  width: 45%;
+  color: var(--sand);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.visit__aside {
+  display: flex;
+  grid-column: 9 / 13;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 1rem;
+}
+
+.visit__photo {
+  width: 100%;
+  max-height: 420px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.visit__note {
+  max-width: 28ch;
+  color: var(--sand);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.visit__map {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1.5rem;
+}
+
+.visit__map .visit__label {
+  margin-bottom: 0;
+}
+
+.jobs__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.jobs__intro {
+  grid-column: 1 / 6;
+  grid-row: 1;
+}
+
+.jobs__intro h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.jobs__contact {
+  grid-column: 1 / 6;
+  grid-row: 2;
+  align-self: end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rattan);
+}
+
+.jobs__list {
+  grid-column: 7 / 13;
+  grid-row: 1 / 3;
+}
+
+.job {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--rattan);
+}
+
+.jobs__list .job:last-child {
+  border-bottom: 1px solid var(--rattan);
+}
+
+.job__title {
+  font-size: clamp(1.5rem, 2.3vw, 2.1rem);
+}
+
+.job__meta {
+  color: var(--green);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.contact__intro {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 5;
+  justify-content: center;
+}
+
+.contact__links {
+  grid-column: 6 / 13;
+}
+
+.contact__email {
+  display: inline-block;
+  border-bottom: 1px solid var(--rattan);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.contact__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact__address {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rattan);
+  color: var(--green-deep);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.contact__note {
+  margin-top: 1rem;
+  color: var(--green-deep);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu {
+    display: block;
+  }
+
+  .cafe__text,
+  .cafe__collage,
+  .menu__intro,
+  .menu__body,
+  .menu__contact,
+  .visit__info,
+  .visit__aside,
+  .jobs__intro,
+  .jobs__list,
+  .jobs__contact,
+  .contact__intro,
+  .contact__links {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .menu__grid,
+  .jobs__grid {
+    grid-template-rows: auto;
+  }
+
+  .cafe__text {
+    padding-top: 0;
+  }
+
+  .cafe__text .cafe__signature {
+    margin-top: 1.75rem;
+  }
+
+  .cafe__collage {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-2);
+    margin-top: 2rem;
+  }
+
+  .cafe__figure--lamp {
+    grid-column: 1 / 7;
+  }
+
+  .cafe__figure--macrame {
+    grid-column: 2 / 7;
+    margin-top: 0;
+  }
+
+  .cafe__caption {
+    text-align: left;
+  }
+
+  .visit__aside {
+    margin-top: 2rem;
+    justify-content: flex-start;
+  }
+
+  .jobs__contact,
+  .menu__contact {
+    margin-top: 1.5rem;
+  }
+
+  .jobs__list {
+    margin-top: 1.5rem;
+  }
+
+  .contact__intro {
+    justify-content: flex-start;
+  }
+
+  .contact__links {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .job {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .job__meta {
+    text-align: left;
+  }
+}

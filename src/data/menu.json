@@ -1,0 +1,11 @@
+{
+  "categories": [
+    { "id": "fruehstueck", "title": "Frühstück", "items": [] },
+    { "id": "brunch", "title": "Brunch", "items": [] },
+    { "id": "kaffee", "title": "Kaffee", "items": [] },
+    { "id": "kuchen", "title": "Kuchen", "items": [] },
+    { "id": "getraenke", "title": "Getränke", "items": [] }
+  ],
+  "allergenNote": "TODO: Allergene und Zusatzstoffe",
+  "pdf": null
+}

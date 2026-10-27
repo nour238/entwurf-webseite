@@ -1,0 +1,78 @@
+---
+import { Picture } from 'astro:assets';
+import heroImage from '../assets/img/hero-spiegel.jpg';
+import logo from '../assets/img/logo-halari-transparent.webp';
+import site from '../data/site.json';
+import { hasText } from '../lib/content.js';
+
+const isOpen = site.status === 'open';
+const openingDate = (() => {
+  if (!hasText(site.openingDate)) return null;
+  const date = new Date(`${site.openingDate}T12:00:00`);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat('de-DE', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Europe/Berlin',
+  }).format(date);
+})();
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__media">
+    <Picture
+      src={heroImage}
+      formats={['avif', 'webp']}
+      fallbackFormat="jpg"
+      widths={[540, 720, 1080]}
+      sizes="(min-width: 900px) 58vw, 100vw"
+      alt="Runde Rattanspiegel über einer Holzkonsole mit Körben und Keramik"
+      loading="eager"
+      decoding="sync"
+      fetchpriority="high"
+      class="hero__image"
+    />
+  </div>
+
+  <div class="hero__panel on-green">
+    <div class="hero__top">
+      <img
+        class="hero__logo"
+        src={logo.src}
+        width="480"
+        height="480"
+        alt="Halari – Breakfast. Coffee. Cake."
+        loading="eager"
+      />
+      <p class="hero__place">Homburg<br />Saar</p>
+    </div>
+
+    <div class="hero__content">
+      <p class="eyebrow">{isOpen ? 'Eisenbahnstraße 6' : 'Bald in Homburg'}</p>
+      <h1 id="hero-title" class="hero__title">Frühstück, Kaffee und Kuchen.</h1>
+
+      <div class="hero__status">
+        {isOpen ? (
+          <p><span data-open-status>Öffnungszeiten</span></p>
+        ) : (
+          <>
+            <p>Wir eröffnen bald in der Eisenbahnstraße 6, Homburg.</p>
+            {openingDate ? <p>Eröffnung am {openingDate}.</p> : <p>Eröffnungstermin folgt.</p>}
+          </>
+        )}
+
+        {isOpen ? (
+          <a class="text-link hero__cta" href="#besuch">Alle Öffnungszeiten</a>
+        ) : (
+          <a
+            class="text-link hero__cta"
+            href={site.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Auf Instagram folgen</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

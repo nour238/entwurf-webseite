@@ -1,0 +1,89 @@
+---
+import menu from '../data/menu.json';
+import site from '../data/site.json';
+import { hasText } from '../lib/content.js';
+
+const categories = (menu.categories ?? [])
+  .map((category) => ({
+    ...category,
+    items: (category.items ?? []).filter((item) => hasText(item.name)),
+  }))
+  .filter((category) => category.items.length > 0);
+
+const hasMenu = categories.length > 0;
+const allergenNote = hasText(menu.allergenNote) ? menu.allergenNote : null;
+const hasPdf = hasText(menu.pdf);
+
+const formatPrice = (cents) => {
+  if (typeof cents !== 'number') return null;
+  return new Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+  }).format(cents / 100);
+};
+---
+
+<section id="speisekarte" class="section section--sand" aria-labelledby="menu-title">
+  <div class="container menu__grid">
+    <div class="menu__intro reveal">
+      <p class="eyebrow">Speisekarte</p>
+      <h2 id="menu-title">Frühstück. Kaffee. Kuchen.</h2>
+      <p class="lead">
+        {hasMenu
+          ? 'Frühstück, Brunch, Kaffee und Kuchen – so, wie wir es mögen.'
+          : site.status === 'open'
+            ? 'Die Gerichte und Preise folgen, sobald die Karte final ist.'
+            : 'Die Gerichte und Preise geben wir zur Eröffnung bekannt.'}
+      </p>
+    </div>
+
+    <div class="menu__body reveal">
+      {hasMenu ? (
+        categories.map((category) => (
+          <div class="menu-category">
+            <h3>{category.title}</h3>
+            <ul>
+              {category.items.map((item) => {
+                const price = formatPrice(item.priceCents);
+                return (
+                  <li class="menu-item">
+                    <div class="menu-item__head">
+                      <span class="menu-item__name">{item.name}</span>
+                      {price && <span class="menu-item__price">{price}</span>}
+                    </div>
+                    {hasText(item.description) && <p>{item.description}</p>}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))
+      ) : (
+        <div class="menu__empty">
+          <p class="menu__empty-title">
+            {site.status === 'open' ? 'Die Karte folgt.' : 'Die Karte folgt zur Eröffnung.'}
+          </p>
+          <ul class="menu__index">
+            {(menu.categories ?? []).map((category) => (
+              <li>
+                <span class="menu__index-title">{category.title}</span>
+                <span class="menu__index-dots" aria-hidden="true"></span>
+                <span class="menu__index-status">folgt</span>
+              </li>
+            ))}
+          </ul>
+          <p class="menu__note">
+            Allergene und Zusatzstoffe geben wir mit der Karte bekannt.
+          </p>
+        </div>
+      )}
+
+      {allergenNote && <p class="menu__note">{allergenNote}</p>}
+      {hasPdf && <a class="text-link menu__note" href={menu.pdf}>Karte als PDF</a>}
+    </div>
+
+    <p class="menu__contact reveal">
+      Fragen? <a class="text-link" href={`mailto:${site.contact.email}`}>Schreib uns.</a>
+    </p>
+  </div>
+</section>

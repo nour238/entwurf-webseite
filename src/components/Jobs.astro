@@ -1,0 +1,46 @@
+---
+import jobs from '../data/jobs.json';
+import site from '../data/site.json';
+import { hasText } from '../lib/content.js';
+
+const roles = (jobs.roles ?? []).filter(
+  (role) => role.active !== false && hasText(role.title),
+);
+const intro = hasText(jobs.intro) ? jobs.intro : null;
+const fallback = hasText(jobs.fallback) ? jobs.fallback : 'Offene Stellen folgen hier.';
+---
+
+<section id="jobs" class="section section--jobs" aria-labelledby="jobs-title">
+  <div class="container jobs__grid">
+    <div class="jobs__intro reveal">
+      <p class="eyebrow">Jobs</p>
+      <h2 id="jobs-title">Wir suchen euch.</h2>
+      {intro && <p class="lead">{intro}</p>}
+    </div>
+
+    <div class="jobs__list reveal">
+      {roles.length > 0 ? (
+        roles.map((role) => {
+          const meta = hasText(role.area)
+            ? role.area
+            : hasText(role.employment)
+              ? role.employment
+              : null;
+
+          return (
+            <div class="job">
+              <h3 class="job__title">{role.title}</h3>
+              {meta && <p class="job__meta">{meta}</p>}
+            </div>
+          );
+        })
+      ) : (
+        <p>{fallback}</p>
+      )}
+    </div>
+
+    <p class="jobs__contact reveal">
+      Interesse? <a class="text-link" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+    </p>
+  </div>
+</section>

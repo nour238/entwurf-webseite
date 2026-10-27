@@ -1,0 +1,23 @@
+{
+  "name": "Halari",
+  "claim": "Breakfast. Coffee. Cake.",
+  "status": "coming-soon",
+  "indexable": false,
+  "openingDate": "TODO: Eröffnungsdatum im Format YYYY-MM-DD",
+  "address": {
+    "street": "Eisenbahnstraße 6",
+    "postalCode": "TODO: PLZ",
+    "city": "Homburg/Saar",
+    "region": "Saarland",
+    "country": "DE"
+  },
+  "contact": {
+    "email": "cafe.halari@web.de",
+    "phone": null
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/cafe.halari/",
+    "tiktok": "https://www.tiktok.com/@cafe.halari"
+  },
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eisenbahnstra%C3%9Fe%206%2C%20Homburg%2FSaar"
+}

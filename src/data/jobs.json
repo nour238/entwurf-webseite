@@ -1,0 +1,20 @@
+{
+  "intro": "Für Service und Bar suchen wir Verstärkung.",
+  "roles": [
+    {
+      "title": "Aushilfe Service (Kellner/in)",
+      "area": "Service",
+      "employment": null,
+      "contact": "cafe.halari@web.de",
+      "active": true
+    },
+    {
+      "title": "Barista",
+      "area": "Bar",
+      "employment": null,
+      "contact": "cafe.halari@web.de",
+      "active": true
+    }
+  ],
+  "fallback": "Offene Stellen folgen hier."
+}

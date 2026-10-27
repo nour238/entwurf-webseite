@@ -1,0 +1,50 @@
+---
+import { Picture } from 'astro:assets';
+import lamp from '../assets/img/cafe-lampe.jpg';
+import macrame from '../assets/img/cafe-macrame.jpg';
+---
+
+<section id="cafe" class="section section--cafe" aria-labelledby="cafe-title">
+  <div class="container cafe__grid">
+    <div class="cafe__text reveal">
+      <p class="eyebrow">Unser Café</p>
+      <h2 id="cafe-title">Mehr als nur ein Café.</h2>
+      <p class="lead">
+        Der Name HALARI setzt sich aus den Anfangsbuchstaben unserer drei Kinder zusammen.
+      </p>
+      <blockquote class="cafe__quote">
+        „Aus ihnen ist Halari entstanden – nicht einfach ein Name, sondern ein Teil von Herz,
+        Familie und Liebe.“
+      </blockquote>
+      <p class="cafe__signature">Familie, Liebe und Zusammenhalt.</p>
+    </div>
+
+    <div class="cafe__collage">
+      <figure class="cafe__figure cafe__figure--lamp reveal">
+        <Picture
+          src={lamp}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          widths={[480, 720, 1080]}
+          sizes="(min-width: 900px) 36vw, 100vw"
+          alt="Pendelleuchte aus Rattan vor Wandnischen mit Keramik"
+          loading="lazy"
+        />
+      </figure>
+
+      <figure class="cafe__figure cafe__figure--macrame reveal">
+        <Picture
+          src={macrame}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          widths={[360, 540, 720]}
+          sizes="(min-width: 900px) 20vw, 82vw"
+          alt="Makramee-Wandbehang neben einer Nische mit grüner Pflanze"
+          loading="lazy"
+        />
+      </figure>
+
+      <p class="cafe__caption reveal">Eisenbahnstraße 6, Homburg/Saar</p>
+    </div>
+  </div>
+</section>

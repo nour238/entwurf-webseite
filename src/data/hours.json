@@ -1,0 +1,17 @@
+{
+  "timezone": "Europe/Berlin",
+  "days": {
+    "monday": { "closed": null, "intervals": [] },
+    "tuesday": { "closed": null, "intervals": [] },
+    "wednesday": { "closed": null, "intervals": [] },
+    "thursday": { "closed": null, "intervals": [] },
+    "friday": { "closed": null, "intervals": [] },
+    "saturday": { "closed": null, "intervals": [] },
+    "sunday": { "closed": null, "intervals": [] }
+  },
+  "notes": {
+    "reservation": "TODO: Reservierung",
+    "dogs": "TODO: Hunde",
+    "accessibility": "TODO: Barrierefreiheit"
+  }
+}

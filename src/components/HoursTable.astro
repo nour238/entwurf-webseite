@@ -1,0 +1,47 @@
+---
+import { formatTime, parseTime } from '../lib/hours.js';
+import { hasText } from '../lib/content.js';
+
+const { hours } = Astro.props;
+
+const days = [
+  ['monday', 'Montag'],
+  ['tuesday', 'Dienstag'],
+  ['wednesday', 'Mittwoch'],
+  ['thursday', 'Donnerstag'],
+  ['friday', 'Freitag'],
+  ['saturday', 'Samstag'],
+  ['sunday', 'Sonntag'],
+];
+
+const rows = days.map(([key, label]) => {
+  const day = hours?.days?.[key];
+
+  if (!day || day.closed === null || !Array.isArray(day.intervals) || day.intervals.length === 0) {
+    return { label, value: 'folgt' };
+  }
+
+  if (day.closed === true) {
+    return { label, value: 'geschlossen' };
+  }
+
+  const intervals = day.intervals
+    .filter((interval) => hasText(interval.open) && hasText(interval.close))
+    .filter((interval) => parseTime(interval.open) !== null && parseTime(interval.close) !== null)
+    .map((interval) => `${formatTime(interval.open)}–${formatTime(interval.close)}`);
+
+  return { label, value: intervals.length > 0 ? intervals.join(', ') : 'folgt' };
+});
+---
+
+<table class="hours-table">
+  <caption class="sr-only">Öffnungszeiten</caption>
+  <tbody>
+    {rows.map((row) => (
+      <tr>
+        <th scope="row">{row.label}</th>
+        <td>{row.value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

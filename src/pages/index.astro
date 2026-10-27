@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Cafe from '../components/Cafe.astro';
+import Speisekarte from '../components/Speisekarte.astro';
+import Besuch from '../components/Besuch.astro';
+import Jobs from '../components/Jobs.astro';
+import Kontakt from '../components/Kontakt.astro';
+import hours from '../data/hours.json';
+import site from '../data/site.json';
+import { hasText } from '../lib/content.js';
+
+const isOpen = site.status === 'open';
+const pageDescription = isOpen
+  ? 'Café Halari in der Eisenbahnstraße 6 in Homburg/Saar. Frühstück, Kaffee und Kuchen.'
+  : 'Café Halari in der Eisenbahnstraße 6 in Homburg/Saar. Frühstück, Kaffee und Kuchen – bald eröffnet.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CafeOrCoffeeShop',
+  name: site.name,
+  description: pageDescription,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressCountry: site.address.country,
+  },
+  email: site.contact.email,
+  sameAs: [site.social.instagram, site.social.tiktok],
+};
+
+if (hasText(site.address.postalCode)) {
+  jsonLd.address.postalCode = site.address.postalCode;
+}
+
+if (Astro.site) {
+  jsonLd.url = Astro.site.href;
+  jsonLd.image = new URL('/og-image.jpg', Astro.site).href;
+}
+---
+
+<BaseLayout
+  title="Halari | Frühstück, Kaffee & Kuchen in Homburg/Saar"
+  description={pageDescription}
+>
+  <Hero />
+  <Cafe />
+  <Speisekarte />
+  <Besuch />
+  <Jobs />
+  <Kontakt />
+
+  <script
+    is:inline
+    type="application/json"
+    id="hours-data"
+    set:html={JSON.stringify({ timezone: hours.timezone, days: hours.days })}
+  ></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  <script>
+    import '../scripts/status.js';
+  </script>
+</BaseLayout>

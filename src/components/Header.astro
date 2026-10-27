@@ -1,0 +1,63 @@
+---
+import mark from '../assets/img/logo-mark.webp';
+import site from '../data/site.json';
+import { withBase } from '../lib/paths.js';
+
+const links = [
+  { href: withBase('/#cafe'), label: 'Café' },
+  { href: withBase('/#speisekarte'), label: 'Speisekarte' },
+  { href: withBase('/#besuch'), label: 'Besuch' },
+  { href: withBase('/#jobs'), label: 'Jobs' },
+];
+---
+
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href={withBase('/')}>
+      <img class="brand__mark" src={mark.src} width="202" height="202" alt="" />
+      <span class="brand__text">
+        <span class="brand__name">HALARI</span>
+        <span class="brand__claim">Breakfast. Coffee. Cake.</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      {links.map((link) => <a class="nav__link" href={link.href}>{link.label}</a>)}
+      <span class="nav__social">
+        <a
+          class="nav__link"
+          href={site.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+        >Instagram</a>
+        <a
+          class="nav__link"
+          href={site.social.tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+        >TikTok</a>
+      </span>
+    </nav>
+
+    <details class="mobile-menu">
+      <summary class="mobile-menu__toggle">
+        <span class="menu-label-open">Menü</span>
+        <span class="menu-label-close">Schließen</span>
+      </summary>
+      <div class="mobile-menu__panel">
+        <div class="mobile-menu__brand">
+          <img class="mobile-menu__mark" src={mark.src} width="202" height="202" alt="" />
+          <span class="mobile-menu__wordmark">HALARI</span>
+        </div>
+        <nav class="mobile-menu__nav" aria-label="Mobile Navigation">
+          {links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </nav>
+        <div class="mobile-menu__foot">
+          <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+          <p class="mobile-menu__address">Eisenbahnstraße 6<br />Homburg/Saar</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths.js';
+---
+
+<BaseLayout
+  title="Seite nicht gefunden | Halari"
+  description="Diese Seite gibt es nicht."
+  noindex
+>
+  <section class="section notfound">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>Diese Seite steht noch nicht auf der Karte.</h1>
+      <p>Vielleicht ist sie bald da. Bis dahin geht es zurück zum Café.</p>
+      <a class="button" href={withBase('/')}>Zur Startseite</a>
+    </div>
+  </section>
+</BaseLayout>
